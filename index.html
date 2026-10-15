@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SceneReVis – A Self-Reflective Vision-Grounded Framework for 3D Indoor Scene Synthesis</title>
-  <meta name="description" content="SceneReVis: A Self-Reflective Vision-Grounded Framework for 3D Indoor Scene Synthesis via Multi-turn RL" />
+  <title>SceneReVis – ACM Multimedia 2026 Oral</title>
+  <meta name="description" content="SceneReVis: A Self-Reflective Vision-Grounded Framework for 3D Indoor Scene Synthesis via Multi-Turn RL" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +39,10 @@
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="hero">
     <div class="container">
-      <h1>SceneReVis: A Self-Reflective Vision-Grounded Framework for 3D Indoor Scene Synthesis via Multi-turn RL</h1>
+      <div class="hero-badge">ACM Multimedia 2026 &middot; Oral</div>
+      <h1>SceneReVis: A Self-Reflective Vision-Grounded Framework for 3D Indoor Scene Synthesis via Multi-Turn RL</h1>
+
+      <p class="affiliations">November 10&ndash;14, 2026 &middot; Rio de Janeiro, Brazil</p>
 
       <div class="authors">
         <span class="author">Yang Zhao<sup>1,2</sup></span>
@@ -60,6 +63,9 @@
       <p class="internship-note">* Work done during an internship at Microsoft Research Asia. &nbsp; &dagger; Corresponding authors.</p>
 
       <div class="hero-buttons">
+        <a href="https://runder-sun.github.io/academic-homepage/papers/scenerevis-acmmm-2026.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-file-pdf"></i> Camera-ready PDF
+        </a>
         <a href="https://arxiv.org/abs/2602.09432" class="btn btn-primary" target="_blank">
           <i class="ai ai-arxiv"></i> arXiv
         </a>
@@ -95,7 +101,7 @@
       <h2 class="section-title">Abstract</h2>
       <div class="section-divider"></div>
       <p class="abstract-text">
-        Current one-pass 3D scene synthesis methods often suffer from <em>spatial hallucinations</em>, such as collisions, due to a lack of deliberative reasoning. To bridge this gap, we introduce <strong>SceneReVis</strong>, a vision-grounded self-reflection framework that employs an iterative &ldquo;diagnose-and-act&rdquo; loop to explicitly intercept and resolve spatial conflicts using multi-modal feedback. To support this step-wise paradigm, we construct <strong>SceneChain-12k</strong>, a large-scale dataset of causal construction trajectories derived through a novel reverse engineering pipeline. We further propose a two-stage training recipe that transitions from Supervised Fine-Tuning to Agentic Reinforcement Learning, evolving the model into an active spatial planner. Extensive experiments demonstrate that SceneReVis achieves <strong>state-of-the-art performance</strong> in high-fidelity generation and goal-oriented optimization, with robust generalization to long-tail domains.
+        Current one-pass 3D scene synthesis methods often suffer from <em>spatial hallucinations</em>, such as collisions, due to a lack of deliberative reasoning. To bridge this gap, we introduce <strong>SceneReVis</strong>, a vision-grounded self-reflection framework that employs an iterative &ldquo;diagnose-and-act&rdquo; loop to explicitly intercept and resolve spatial conflicts using multi-modal feedback. To support this step-wise paradigm, we construct <strong>SceneChain-12k</strong>, a large-scale dataset of causal construction trajectories derived through a novel reverse engineering pipeline. We further propose a two-stage training recipe that transitions from Supervised Fine-Tuning to Agentic Reinforcement Learning, evolving the model into an active spatial planner. Extensive experiments demonstrate that SceneReVis achieves <strong>state-of-the-art performance</strong> in high-fidelity generation and goal-oriented optimization, with improved transfer to underrepresented room categories in the dataset and promising potential for extension to out-of-distribution room types.
       </p>
     </div>
   </section>
@@ -111,6 +117,7 @@
         <div class="figure-desc">
           <h3>Training Pipeline Overview</h3>
           <p>The SceneReVis learning framework consists of: <strong>(a)</strong> Data Construction via reverse engineering, <strong>(b)</strong> Cold Start via Supervised Fine-Tuning, <strong>(c)</strong> Legend, and <strong>(d)</strong> Agentic RL with GRPO for self-reflective reasoning.</p>
+          <p><strong>SceneChain-12k</strong> contains 12,177 construction trajectories from 4,059 valid 3D-FRONT scenes. The agent receives top-down and randomly sampled oblique views during iterative scene refinement.</p>
         </div>
       </div>
     </div>
@@ -126,7 +133,7 @@
       <div class="table-card fade-in">
         <div class="table-card-header">
           <h3>Bedroom &amp; Living Room Comparison</h3>
-          <p>Quantitative evaluation on standard room types. SceneReVis significantly reduces collision and out-of-boundary rates while achieving the highest visual quality scores.</p>
+          <p>Evaluation on standard room categories (N=300). SceneReVis achieves the lowest average collision rate and the highest average visual-semantic score across Bedroom and Living Room.</p>
         </div>
         <div class="table-full">
           <table>
@@ -172,39 +179,45 @@
               </tr>
               <tr>
                 <td class="method-name">I-Design</td>
-                <td>15.5</td><td class="second">18.2</td><td class="second">8.3</td><td>6.6</td><td>8.1</td><td class="second">7.7</td>
+                <td>15.5</td><td>18.2</td><td>8.3</td><td>6.6</td><td>8.1</td><td>7.7</td>
                 <td>17.8</td><td>14.1</td><td class="second">8.3</td><td>6.5</td><td>8.6</td><td class="second">7.8</td>
                 <td>16.7</td><td>16.2</td><td class="second">8.3</td><td>6.6</td><td>8.4</td><td class="second">7.8</td>
               </tr>
               <tr>
                 <td class="method-name">Holodeck</td>
-                <td>15.4</td><td>22.2</td><td>7.1</td><td class="best">8.1</td><td class="second">8.6</td><td class="best">7.9</td>
-                <td class="second">10.0</td><td class="best">3.1</td><td>5.9</td><td class="best">8.2</td><td class="best">8.8</td><td>7.6</td>
-                <td class="second">12.7</td><td class="second">12.7</td><td>6.5</td><td class="best">8.2</td><td class="second">8.7</td><td class="second">7.8</td>
+                <td>15.4</td><td>22.2</td><td>7.1</td><td class="best">8.1</td><td class="second">8.6</td><td class="second">7.9</td>
+                <td>10.0</td><td class="best">3.1</td><td>5.9</td><td class="best">8.2</td><td class="best">8.8</td><td>7.6</td>
+                <td>12.7</td><td>12.7</td><td>6.5</td><td class="best">8.2</td><td class="second">8.7</td><td class="second">7.8</td>
               </tr>
               <tr>
                 <td class="method-name">LayoutVLM</td>
-                <td class="second">11.5</td><td>44.9</td><td>7.0</td><td>7.6</td><td>8.0</td><td>7.5</td>
-                <td>14.3</td><td>28.7</td><td>6.8</td><td class="second">7.9</td><td class="second">8.7</td><td class="second">7.8</td>
+                <td>11.5</td><td>44.9</td><td>7.0</td><td>7.6</td><td>8.0</td><td>7.5</td>
+                <td>14.3</td><td>28.7</td><td>6.8</td><td>7.9</td><td class="second">8.7</td><td class="second">7.8</td>
                 <td>12.9</td><td>36.8</td><td>6.9</td><td>7.8</td><td>8.4</td><td>7.7</td>
+              </tr>
+              <tr>
+                <td class="method-name">SceneWeaver</td>
+                <td class="best">0.0</td><td class="second">11.0</td><td class="second">8.4</td><td>7.3</td><td>7.4</td><td>7.7</td>
+                <td class="best">0.7</td><td>8.0</td><td>7.2</td><td>7.1</td><td>8.4</td><td>7.6</td>
+                <td class="best">0.4</td><td class="second">9.5</td><td>7.8</td><td>7.2</td><td>7.9</td><td>7.6</td>
               </tr>
               <tr class="highlight-row">
                 <td class="method-name"><strong>SceneReVis (Ours)</strong></td>
-                <td class="best">2.8</td><td class="best">4.6</td><td class="best">9.3</td><td class="second">8.0</td><td class="best">8.9</td><td class="best">8.7</td>
-                <td class="best">1.2</td><td class="second">4.4</td><td class="best">9.5</td><td class="second">8.0</td><td class="best">8.8</td><td class="best">8.8</td>
-                <td class="best">2.0</td><td class="best">4.5</td><td class="best">9.4</td><td class="second">8.0</td><td class="best">8.9</td><td class="best">8.8</td>
+                <td class="second">2.8</td><td class="best">4.6</td><td class="best">9.3</td><td class="second">8.0</td><td class="best">8.9</td><td class="best">8.7</td>
+                <td class="second">1.2</td><td class="second">4.4</td><td class="best">9.5</td><td class="second">8.0</td><td class="best">8.8</td><td class="best">8.8</td>
+                <td class="second">2.0</td><td class="best">4.5</td><td class="best">9.4</td><td class="second">8.0</td><td class="best">8.9</td><td class="best">8.8</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p class="table-legend"><span class="best">Bold</span> = best &nbsp;|&nbsp; <span class="second">Underline</span> = second best &nbsp;|&nbsp; <span class="legend-physical">■</span> Physical: OBR (Out-of-Boundary Rate), CNR (Collision Rate) &nbsp;|&nbsp; <span class="legend-semantic">■</span> Visual-Semantic: Ra. (Rationality), Spa. (Spatial), Ac. (Accuracy), Avg.</p>
+        <p class="table-legend"><span class="best">Bold</span> = best &nbsp;|&nbsp; <span class="second">Underline</span> = second best &nbsp;|&nbsp; <span class="legend-physical">■</span> Physical: OBR (Out-of-Boundary Rate), CNR (Collision Rate) &nbsp;|&nbsp; <span class="legend-semantic">■</span> Visual-Semantic: Ra. (Rationality), Spa. (Spatial Layout), Ac. (Accessibility), Avg.</p>
       </div>
 
       <!-- ===== Table 2: Dining Room & Study Room ===== -->
       <div class="table-card fade-in">
         <div class="table-card-header">
-          <h3>Long-tail Generalization: Dining Room &amp; Study Room</h3>
-          <p>Evaluation on long-tail room types unseen during training, demonstrating SceneReVis&rsquo;s strong generalization capability.</p>
+          <h3>Low-Frequency Categories: Dining Room &amp; Study Room</h3>
+          <p>Evaluation on underrepresented, low-frequency room categories within the dataset (N=100). SceneReVis achieves the lowest average collision rate and the highest average visual-semantic score across Dining Room and Study Room.</p>
         </div>
         <div class="table-full">
           <table>
@@ -232,13 +245,13 @@
             <tbody>
               <tr>
                 <td class="method-name">LayoutGPT</td>
-                <td class="second">6.2</td><td>26.2</td><td>6.9</td><td>7.7</td><td class="best">8.8</td><td class="second">7.8</td>
+                <td>6.2</td><td>26.2</td><td>6.9</td><td>7.7</td><td class="best">8.8</td><td class="second">7.8</td>
                 <td>16.6</td><td>52.1</td><td class="best">8.5</td><td>7.2</td><td>8.3</td><td class="second">8.0</td>
-                <td class="second">11.4</td><td>39.2</td><td>7.7</td><td>7.5</td><td>8.6</td><td class="second">7.9</td>
+                <td>11.4</td><td>39.2</td><td>7.7</td><td>7.5</td><td>8.6</td><td class="second">7.9</td>
               </tr>
               <tr>
                 <td class="method-name">I-Design</td>
-                <td>17.6</td><td class="best">0.7</td><td class="second">7.8</td><td>5.7</td><td class="best">8.8</td><td>7.4</td>
+                <td>17.6</td><td class="second">0.7</td><td class="second">7.8</td><td>5.7</td><td class="best">8.8</td><td>7.4</td>
                 <td>16.3</td><td class="second">4.5</td><td class="second">8.2</td><td>6.9</td><td class="best">8.9</td><td class="second">8.0</td>
                 <td>17.0</td><td class="second">2.6</td><td class="second">8.0</td><td>6.3</td><td class="best">8.9</td><td>7.7</td>
               </tr>
@@ -251,14 +264,20 @@
               <tr>
                 <td class="method-name">LayoutVLM</td>
                 <td>19.2</td><td>27.0</td><td>6.5</td><td>7.8</td><td class="best">8.8</td><td>7.7</td>
-                <td class="second">12.3</td><td>36.6</td><td>6.9</td><td>7.6</td><td class="second">8.6</td><td>7.7</td>
+                <td>12.3</td><td>36.6</td><td>6.9</td><td>7.6</td><td class="second">8.6</td><td>7.7</td>
                 <td>15.8</td><td>31.8</td><td>6.7</td><td>7.7</td><td>8.7</td><td>7.7</td>
+              </tr>
+              <tr>
+                <td class="method-name">SceneWeaver</td>
+                <td class="best">0.0</td><td class="best">0.3</td><td>6.3</td><td>6.6</td><td>8.3</td><td>7.1</td>
+                <td class="best">0.0</td><td>6.7</td><td>6.8</td><td class="best">8.4</td><td>8.5</td><td>7.9</td>
+                <td class="best">0.0</td><td>3.0</td><td>6.5</td><td>7.5</td><td>8.4</td><td>7.5</td>
               </tr>
               <tr class="highlight-row">
                 <td class="method-name"><strong>SceneReVis (Ours)</strong></td>
-                <td class="best">0.1</td><td class="second">2.8</td><td class="best">8.1</td><td class="best">8.3</td><td class="second">8.6</td><td class="best">8.3</td>
-                <td class="best">0.5</td><td class="best">2.1</td><td class="second">8.2</td><td class="second">8.3</td><td class="best">8.9</td><td class="best">8.5</td>
-                <td class="best">0.3</td><td class="best">2.5</td><td class="best">8.2</td><td class="best">8.3</td><td class="second">8.8</td><td class="best">8.4</td>
+                <td class="second">0.1</td><td>2.8</td><td class="best">8.1</td><td class="best">8.3</td><td class="second">8.6</td><td class="best">8.3</td>
+                <td class="second">0.5</td><td class="best">2.1</td><td class="second">8.2</td><td class="second">8.3</td><td class="best">8.9</td><td class="best">8.5</td>
+                <td class="second">0.3</td><td class="best">2.5</td><td class="best">8.2</td><td class="best">8.3</td><td class="second">8.8</td><td class="best">8.4</td>
               </tr>
             </tbody>
           </table>
@@ -340,27 +359,27 @@
       <div class="gallery-item fade-in">
         <div class="gallery-header">
           <h3>Standard Scenes: Bedroom &amp; Living Room</h3>
-          <p>SceneReVis produces physically plausible layouts with no collisions, while baseline methods exhibit various spatial violations.</p>
+          <p>Qualitative comparisons, including SceneWeaver, show how SceneReVis reduces physical violations while preserving visual and semantic quality.</p>
         </div>
-        <img src="static/figures/results_bed_liv.png" alt="Qualitative comparison for Bedroom and Living Room" loading="lazy" />
+        <img src="static/figures/results_bed_liv_mm2026.png" alt="Camera-ready comparison including SceneWeaver for Bedroom and Living Room" loading="lazy" />
       </div>
 
       <!-- Long-tail -->
       <div class="gallery-item fade-in">
         <div class="gallery-header">
-          <h3>Long-tail Generalization: Dining Room &amp; Study Room</h3>
-          <p>Even on unseen room types, SceneReVis maintains high spatial accuracy and semantic coherence.</p>
+          <h3>Low-Frequency Categories: Dining Room &amp; Study Room</h3>
+          <p>These Dining Room and Study Room examples illustrate transfer to underrepresented categories within the dataset.</p>
         </div>
-        <img src="static/figures/results_ood.png" alt="Qualitative comparison for long-tail scenes" loading="lazy" />
+        <img src="static/figures/results_low_frequency_mm2026.png" alt="Camera-ready comparison for low-frequency Dining Room and Study Room categories" loading="lazy" />
       </div>
 
       <!-- More Comparisons -->
       <div class="gallery-item fade-in">
         <div class="gallery-header">
-          <h3>Additional Comparisons with Baselines</h3>
-          <p>Side-by-side comparisons further highlight SceneReVis&rsquo;s superior generation quality over existing methods.</p>
+          <h3>Additional OOD Categories: Qualitative Comparisons</h3>
+          <p>Exploratory qualitative comparisons illustrate the potential for extension to out-of-distribution room types.</p>
         </div>
-        <img src="static/figures/more_com.png" alt="More comparison results" loading="lazy" />
+        <img src="static/figures/more_com_mm2026.png" alt="Exploratory qualitative comparisons for additional out-of-distribution room types" loading="lazy" />
       </div>
 
       <!-- Optimization -->
@@ -375,8 +394,8 @@
       <!-- More Results -->
       <div class="gallery-item fade-in">
         <div class="gallery-header">
-          <h3>Diverse Room Generation</h3>
-          <p>Additional results across diverse room types &mdash; gym, entertainment room, office, and more &mdash; showcasing the versatility of SceneReVis.</p>
+          <h3>Additional Qualitative Examples</h3>
+          <p>Additional generated scenes, including gyms, entertainment rooms, and offices, illustrate the diversity of the outputs.</p>
         </div>
         <img src="static/figures/more_results.png" alt="More generation results" loading="lazy" />
       </div>
@@ -394,11 +413,14 @@
         <button class="copy-btn" id="copyBtn" onclick="copyBibtex()">
           <i class="fa-regular fa-copy"></i> Copy
         </button>
-        <pre id="bibtex">@article{zhao2026scenerevis,
-  title={SceneReVis: A Self-Reflective Vision-Grounded Framework for 3D Indoor Scene Synthesis via Multi-turn RL},
+        <pre id="bibtex">@inproceedings{zhao2026scenerevis,
+  title={SceneReVis: A Self-Reflective Vision-Grounded Framework for 3D Indoor Scene Synthesis via Multi-Turn RL},
   author={Yang Zhao and Shizhao Sun and Meisheng Zhang and Yingdong Shi and Xubo Yang and Jiang Bian},
-  journal={arXiv preprint arXiv:2602.09432},
-  year={2026}
+  booktitle={Proceedings of the 34th ACM International Conference on Multimedia},
+  year={2026},
+  doi={10.1145/3767308.3835940},
+  numpages={9},
+  url={https://arxiv.org/abs/2602.09432}
 }</pre>
       </div>
     </div>
@@ -408,7 +430,7 @@
   <footer class="footer">
     <div class="container">
       <p>
-        SceneReVis &copy; 2025 &middot;
+        SceneReVis &copy; 2026 &middot;
         Template inspired by <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.
       </p>
     </div>

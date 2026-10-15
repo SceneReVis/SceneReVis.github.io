@@ -377,9 +377,10 @@ body {
   line-height: 1.55;
 }
 
-/* ===== Table Full-Width (NO scroll) ===== */
+/* ===== Full-Width Results Tables ===== */
 .table-full {
   width: 100%;
+  overflow-x: auto;
 }
 
 .table-full table {
